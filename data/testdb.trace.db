@@ -1,0 +1,21 @@
+2023-06-06 08:53:16 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE [*]USER ( user_id VARCHAR(60) DEFAULT RANDOM_UUID() PRIMARY KEY, ext_id VARCHAR(100), first_name VARCHAR(100), last_name VARCHAR(100), role_id VARCHAR(60), metadata VARCHAR(1000), )"; expected "identifier"; SQL statement:
+CREATE TABLE USER ( user_id VARCHAR(60) DEFAULT RANDOM_UUID() PRIMARY KEY, ext_id VARCHAR(100), first_name VARCHAR(100), last_name VARCHAR(100), role_id VARCHAR(60), metadata VARCHAR(1000), ) [42001-214]
+2023-06-06 08:53:58 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TEST_MESSAGES" already exists; SQL statement:
+CREATE TABLE TEST_MESSAGES ( id VARCHAR(60) DEFAULT RANDOM_UUID() PRIMARY KEY, text VARCHAR NOT NULL ) [42101-214]
+2023-06-06 08:54:28 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE [*]USER ( user_id VARCHAR(60) DEFAULT RANDOM_UUID() PRIMARY KEY, ext_id VARCHAR(100), first_name VARCHAR(100), last_name VARCHAR(100), role_id VARCHAR(60), metadata VARCHAR(1000) )"; expected "identifier"; SQL statement:
+CREATE TABLE USER ( user_id VARCHAR(60) DEFAULT RANDOM_UUID() PRIMARY KEY, ext_id VARCHAR(100), first_name VARCHAR(100), last_name VARCHAR(100), role_id VARCHAR(60), metadata VARCHAR(1000) ) [42001-214]
+2023-06-06 08:58:36 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE [*]USER ( userId VARCHAR(60) DEFAULT RANDOM_UUID() PRIMARY KEY, extId VARCHAR(100), firstname VARCHAR(100), lastname VARCHAR(100), roleId VARCHAR(60), metadata VARCHAR(1000) )"; expected "identifier"; SQL statement:
+CREATE TABLE USER ( userId VARCHAR(60) DEFAULT RANDOM_UUID() PRIMARY KEY, extId VARCHAR(100), firstname VARCHAR(100), lastname VARCHAR(100), roleId VARCHAR(60), metadata VARCHAR(1000) ) [42001-214]
+2023-06-06 08:59:46 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE RESOURCE ( resourceId VARCHAR(60) DEFAULT RANDOM_UUID() PRIMARY KEY, name VARCHAR(100), type VARCHAR(100), defaultaccess VARCHAR(100) [*]status VARCHAR(60), metadata VARCHAR(1000) )"; expected "ARRAY, INVISIBLE, VISIBLE, NOT NULL, NULL, AS, DEFAULT, GENERATED, ON UPDATE, NOT NULL, NULL, AUTO_INCREMENT, DEFAULT ON NULL, NULL_TO_DEFAULT, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, COMMENT, PRIMARY KEY, UNIQUE, NOT NULL, NULL, CHECK, REFERENCES, AUTO_INCREMENT, ,, )"; SQL statement:
+CREATE TABLE RESOURCE ( resourceId VARCHAR(60) DEFAULT RANDOM_UUID() PRIMARY KEY, name VARCHAR(100), type VARCHAR(100), defaultaccess VARCHAR(100) status VARCHAR(60), metadata VARCHAR(1000) ) [42001-214]
+2023-06-06 09:04:03 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO Resource [*]RESOURCE (resourceId, name, type, defaultaccess, status) VALUES ('r1', 'ADMIN_PORTAL', 'APP', 'private', 'active')"; expected "., (, OVERRIDING USER VALUE, OVERRIDING SYSTEM VALUE, DIRECT, SORTED, DEFAULT VALUES, VALUES, SET, WITH, (, SELECT, TABLE, VALUES"; SQL statement:
+INSERT INTO Resource RESOURCE (resourceId, name, type, defaultaccess, status) VALUES ('r1', 'ADMIN_PORTAL', 'APP', 'private', 'active') [42001-214]
+2023-06-06 09:15:24 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO USER_INFO (userId, extId,firstname, lastname, roleId, metadata) VALUES ('user1', '1081901','Adam', 'Admin', 'role1', '{""facilityId"":""1234567"", ""facilityName"":""St.Jude senior living"", ""type"":""MPIN"", ""market"":""MN""})'[*]"; expected "[, ::, AT, FORMAT, *, /, %, +, -, ||, NOT, IS, ILIKE, REGEXP, AND, OR, ,, )"; SQL statement:
+INSERT INTO USER_INFO (userId, extId,firstname, lastname, roleId, metadata) VALUES ('user1', '1081901','Adam', 'Admin', 'role1', '{"facilityId":"1234567", "facilityName":"St.Jude senior living", "type":"MPIN", "market":"MN"})' [42001-214]
