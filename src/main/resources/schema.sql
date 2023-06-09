@@ -3,23 +3,18 @@ CREATE TABLE TEST_MESSAGES (
    text                   VARCHAR      NOT NULL
    );
 
-   CREATE TABLE Role (
-      roleId                     VARCHAR(60)  DEFAULT RANDOM_UUID() PRIMARY KEY,
-      rolename                   VARCHAR(100)
 
-     );
 
    CREATE TABLE USER_INFO (
       userId                     VARCHAR(60)  DEFAULT RANDOM_UUID() PRIMARY KEY,
       extId                      VARCHAR(100),
       firstname                  VARCHAR(100),
       lastname                  VARCHAR(100),
-      roleId                    VARCHAR(60),
+
       metadata                   VARCHAR(1000)
 
      );
 
-     ALTER TABLE USER_INFO    ADD FOREIGN KEY (roleId)     REFERENCES Role(roleId);
 
 
 
@@ -38,12 +33,11 @@ CREATE TABLE TEST_MESSAGES (
 
 
 
-INSERT INTO ROLE (roleId, rolename) VALUES ('role1', 'Facility_admin');
-INSERT INTO ROLE (roleId, rolename) VALUES ('role2', 'Facility_user');
 
 
-INSERT INTO USER_INFO (userId, extId,firstname, lastname, roleId, metadata) VALUES ('user1', '1081901','Adam', 'Admin', 'role1', '{"facilityId":"1234567", "facilityName":"St.Jude senior living", "type":"MPIN", "market":"MN"}');
-INSERT INTO USER_INFO (userId, extId,firstname, lastname, roleId, metadata) VALUES ('user2', '0071001','Katrina', 'User', 'role2', '{"facilityId":"1234567", "facilityName":"St.Jude senior living", "type":"MPIN", "market":"MN"}');
+
+INSERT INTO USER_INFO (userId, extId,firstname, lastname, metadata) VALUES ('user1', '1081901','Adam', 'Admin', '[{"role":"Facility-admin", "facilityId":"1234567", "facilityName":"St.Jude senior living", "type":"MPIN", "market":"MN"}]');
+INSERT INTO USER_INFO (userId, extId,firstname, lastname, metadata) VALUES ('user2', '0071001','Katrina', 'User','[{"role":"Facility-user", "facilityId":"1234567", "facilityName":"St.Jude senior living", "type":"MPIN", "market":"MN"}]');
 
 
 INSERT INTO Resource  (resourceId, name, type, defaultaccess, status) VALUES ('r1', 'ADMIN_PORTAL', 'APP', 'private', 'active');
