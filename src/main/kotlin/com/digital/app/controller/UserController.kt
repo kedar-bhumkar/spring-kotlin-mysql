@@ -16,21 +16,22 @@ import org.springframework.web.bind.annotation.*
 class UserController(val userInfoService: UserInfoService,  val resourceService: ResourceService, val service: MessageService) {
 
 
-    @GetMapping("/user/{id}/{type}")
-    fun index(@PathVariable id: String, @PathVariable type: String): ResponseEntity<Any> {
+    @GetMapping("/user")
+    //fun index(@PathVariable id: String, @PathVariable type: String): ResponseEntity<Any> {
+    fun index(@RequestParam userId: String, @RequestParam cmpType: String): ResponseEntity<Any> {
         val mapper = jacksonObjectMapper()
         var res:ResponseEntity<Any>
         val userDetail = UserDetail()
-        print("Passed...  id $id  and type is $type")
+        print("Passed...  id $userId  and type is $cmpType")
         try {
-            userDetail.userInfo = userInfoService.findUserByExtId(id)[0]
+            userDetail.userInfo = userInfoService.findUserByExtId(userId)[0]
             print("Response - $userDetail.userInfo ")
 
 
             userDetail.roles = mapper.readValue(userDetail.userInfo!!.metadata.toString())
             print("Roles - $userDetail.roles")
 
-            val resources = resourceService.findResourcesByType(type, "public")
+            val resources = resourceService.findResourcesByType(cmpType, "public")
 
             val resDTOs = mutableListOf<ResourceDTO>()
 
