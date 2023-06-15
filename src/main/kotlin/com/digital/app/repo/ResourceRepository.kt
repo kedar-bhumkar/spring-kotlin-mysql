@@ -10,5 +10,7 @@ interface ResourceRepository : CrudRepository<Resource, String> {
 
     fun findResourcesBydefaultaccess(defaultaccess:String):List<Resource>
 
+    fun findResourcesByName(name:String):List<Resource>
+
 }
 

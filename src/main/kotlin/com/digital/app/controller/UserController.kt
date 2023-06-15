@@ -13,12 +13,14 @@ import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 @RestController
+@CrossOrigin
+
 class UserController(val userInfoService: UserInfoService,  val resourceService: ResourceService, val service: MessageService) {
 
 
     @GetMapping("/user")
     //fun index(@PathVariable id: String, @PathVariable type: String): ResponseEntity<Any> {
-    fun index(@RequestParam userId: String, @RequestParam cmpType: String): ResponseEntity<Any> {
+    fun index(@RequestParam userId: String, @RequestParam(required = false)  cmpType: String?): ResponseEntity<Any> {
         val mapper = jacksonObjectMapper()
         var res:ResponseEntity<Any>
         val userDetail = UserDetail()
@@ -31,7 +33,7 @@ class UserController(val userInfoService: UserInfoService,  val resourceService:
             userDetail.roles = mapper.readValue(userDetail.userInfo!!.metadata.toString())
             print("Roles - $userDetail.roles")
 
-            val resources = resourceService.findResourcesByType(cmpType, "public")
+            val resources = resourceService.findResourcesByType(cmpType?:"APP", "public")
 
             val resDTOs = mutableListOf<ResourceDTO>()
 
